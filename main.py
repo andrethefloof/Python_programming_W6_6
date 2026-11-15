@@ -1,13 +1,13 @@
+LOWER_ALPHABETS = "abcdefghijklmnopqrstuvwxyz"
+UPPER_ALPHABETS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 def cipher(text):
-    LOWER_ALPHABETS = "abcdefghijklmnopqrstuvwxyz"
-    UPPER_ALPHABETS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     cipheredt = ""
     for char in text:
         if char in LOWER_ALPHABETS:
-            index = (LOWER_ALPHABETS.index(char) + 3) % 26
+            index = (LOWER_ALPHABETS.index(char) + 13) % 26
             cipheredt += LOWER_ALPHABETS[index]
         elif char in UPPER_ALPHABETS:
-            index = (UPPER_ALPHABETS.index(char) + 3) % 26
+            index = (UPPER_ALPHABETS.index(char) + 13) % 26
             cipheredt += UPPER_ALPHABETS[index]
         else:
             cipheredt += char
