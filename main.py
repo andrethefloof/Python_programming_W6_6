@@ -37,4 +37,5 @@ def main():
     saveToFile(filename, cipheredt)
     print("Ciphered text saved!")
     print("Program ending.")
-main()
+if __name__ == "__main__":
+    main()
