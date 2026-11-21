@@ -1,6 +1,6 @@
 LOWER_ALPHABETS = "abcdefghijklmnopqrstuvwxyz"
 UPPER_ALPHABETS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-def cipher(text):
+def rot13(text):
     cipheredt = ""
     for char in text:
         if char in LOWER_ALPHABETS:
@@ -12,12 +12,17 @@ def cipher(text):
         else:
             cipheredt += char
     return cipheredt
-def saveToFile(filename, text):
-    with open(filename, "w", encoding="utf-8") as file:
+def writeFile(filename, text):
+    with open(filename, "w", encoding="UTF-8") as file:
         file.write(text)
-def main():
+writefile = writeFile
+def shiftCharacter(char, alphabet):
+    if char in alphabet:
+        index = (alphabet.index(char) + 13) % 26
+        return alphabet[index]
+    return char
+def askRows():
     fullt = ""
-    print("Program starting.\n")
     print("Collecting plain text rows for ciphering.")
     while True:
         line = input("Insert row(empty stops): ")
@@ -27,14 +32,17 @@ def main():
             fullt = line
         else:
             fullt += "\n" + line
+    return fullt
+def main():
     print()
     print("#### Ciphered text ####")
-    cipheredt = cipher(fullt)
+    fullt = askRows()
+    cipheredt = rot13(fullt)
     print(cipheredt)
     print()
     print("### Ciphered text ###")
     filename = input("Insert filename to save: ")
-    saveToFile(filename, cipheredt)
+    writefile(filename, cipheredt)
     print("Ciphered text saved!")
     print("Program ending.")
 if __name__ == "__main__":
